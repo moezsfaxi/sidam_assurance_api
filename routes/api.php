@@ -11,7 +11,7 @@ use App\Http\Controllers\ReclamationClientController;
 use App\Http\Controllers\AssuranceIndividuelleAccidentsController;
 use App\Http\Controllers\AssuranceMultirisqueHabitationController;
 use App\Http\Controllers\AssuranceMultirisqueProfessionnelleController;
-
+use App\Http\Controllers\MesPolicesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +31,9 @@ Route::apiResource('/assurance-transport', AssuranceTransportController::class);
 Route::apiResource('/assurance-voyage', AssuranceVoyageController::class);
 Route::apiResource('/reclamation-client', ReclamationClientController::class);
 Route::apiResource('/users', UsersController::class);
+Route::get('/users/{id}/specific-columns', [UsersController::class, 'specificColumns']);
+Route::get('/assurance/{email}/all-the-active-police', [MesPolicesController::class, 'getmealltheassurances']);
+
 
 
 

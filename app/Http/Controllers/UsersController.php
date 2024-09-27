@@ -120,4 +120,19 @@ class UsersController extends Controller
         Users::destroy($id);
         return response()->json(null, 204);
     }
+    
+    
+    public function specificColumns($id)
+    {
+    $user = Users::select('name', 'mail') // specify the columns you want
+                ->where('id', $id)
+                ->first();
+
+    if ($user) {
+        return response()->json($user, 200);
+    } else {
+        return response()->json(['message' => 'User not found'], 404);
+    }
+    }
+
 }
