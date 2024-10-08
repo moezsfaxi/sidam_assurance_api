@@ -36,16 +36,18 @@ class UsersController extends Controller
     
     {
         $validated = $request->validate([
-            'name' => 'required|string',
+            'mail' => 'required|string',
             'password' => 'required|string',
         ]);
         
         // Extract the name and password from the request
-        $name = $validated['name'];
+        $name = $validated['mail'];
         $password = $validated['password'];
         
         // Find the user by name
-        $user = Users::where('name', $name)->first();
+        //$user = Users::where('name', $name)->first();
+        // find the user by email
+        $user = Users::where('mail', $name)->first();
         
         if (!$user) {
             return response()->json(['message' => "User doesn't exist"], 200);
@@ -122,10 +124,10 @@ class UsersController extends Controller
     }
     
     
-    public function specificColumns($id)
+    public function specificColumns($email)
     {
-    $user = Users::select('name', 'mail') // specify the columns you want
-                ->where('id', $id)
+    $user = Users::select('name', 'mail','') // specify the columns you want
+                ->where('mail', $email)
                 ->first();
 
     if ($user) {

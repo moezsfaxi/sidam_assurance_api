@@ -31,7 +31,7 @@ Route::apiResource('/assurance-transport', AssuranceTransportController::class);
 Route::apiResource('/assurance-voyage', AssuranceVoyageController::class);
 Route::apiResource('/reclamation-client', ReclamationClientController::class);
 Route::apiResource('/users', UsersController::class);
-Route::get('/users/{id}/specific-columns', [UsersController::class, 'specificColumns']);
+Route::get('/users/{email}/specific-columns', [UsersController::class, 'specificColumns']);
 Route::get('/assurance/{email}/all-the-active-police', [MesPolicesController::class, 'getmealltheassurances']);
 
 
