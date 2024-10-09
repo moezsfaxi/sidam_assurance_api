@@ -54,12 +54,23 @@ class AssuranceIndividuelleAccidentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+/* 
     public function update(Request $request, string $id)
     {
         $assurance = AssuranceIndividuelleAccidents::findOrFail($id);
         $assurance->update($request->all());
         return response()->json($assurance);
+    } */
+    public function update(Request $request, string $id)
+    {
+        $assurances = AssuranceIndividuelleAccidents::findOrFail($id);
+        $assurances->update($request->only('date_fin_couvert'));
+        return response()->json($assurances); 
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

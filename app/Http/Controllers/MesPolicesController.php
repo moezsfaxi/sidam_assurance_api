@@ -19,14 +19,14 @@ class MesPolicesController extends Controller
     
     public function getmealltheassurances($email)
     {
-      $assuranceauto = AssuranceAuto::select('montant_total','premier_paiement')
+      $assuranceauto = AssuranceAuto::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
                                         $item["type_assurance"] = "assurance auto";
                                         return $item ;
                                     })->toArray();  
-      $assuranceind = AssuranceIndividuelleAccidents::select('montant_total','premier_paiement')
+      $assuranceind = AssuranceIndividuelleAccidents::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
@@ -34,14 +34,14 @@ class MesPolicesController extends Controller
                                         return $item ;
                                     })->toArray();      
                                              
-      $assurancehab = AssuranceMultirisqueHabitation::select('montant_total','premier_paiement')
+      $assurancehab = AssuranceMultirisqueHabitation::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
                                         $item["type_assurance"] = "assurance habitation";
                                         return $item ;
                                     })->toArray();      
-      $assurancepro = AssuranceMultirisqueProfessionnelle::select('montant_total','premier_paiement')
+      $assurancepro = AssuranceMultirisqueProfessionnelle::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
@@ -49,7 +49,7 @@ class MesPolicesController extends Controller
                                         return $item ;
                                     })->toArray();                                 
             
-      $assuranceagri = AssuranceRisqueAgricole::select('montant_total','premier_paiement')
+      $assuranceagri = AssuranceRisqueAgricole::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
@@ -57,7 +57,7 @@ class MesPolicesController extends Controller
                                         return $item ;
                                     })->toArray();   
 
-      $assurancesante = AssuranceSante::select('montant_total','premier_paiement')
+      $assurancesante = AssuranceSante::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
@@ -65,7 +65,7 @@ class MesPolicesController extends Controller
                                         return $item ;
                                     })->toArray();   
 
-      $assurancechantiers = AssuranceTousRisquesChantiers::select('montant_total','premier_paiement')
+      $assurancechantiers = AssuranceTousRisquesChantiers::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email_resp",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
@@ -73,14 +73,14 @@ class MesPolicesController extends Controller
                                         return $item ;
                                     })->toArray();    
 
-      $assurancevoyage = AssuranceVoyage::select('montant_total','premier_paiement')
+      $assurancevoyage = AssuranceVoyage::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
                                         $item["type_assurance"] = "assurance voyage";
                                         return $item ;
                                     })->toArray();    
-      $assurancetransport = AssuranceTransport::select('montant_total','premier_paiement')
+      $assurancetransport = AssuranceTransport::select('id','montant_total','premier_paiement','date_debut_couvert','date_fin_couvert')
                                     ->where("email",$email)
                                     ->where('activ_couvert', 'active')
                                     ->get()->map(function($item){
